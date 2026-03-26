@@ -5,6 +5,7 @@ let userModel = require("../schemas/users");
 let userController = require("../controllers/users");
 const { checkLogin,checkRole } = require("../utils/authHandler");
 
+
 router.get("/", checkLogin,checkRole("ADMIN","MODERATOR"), async function (req, res, next) {
   let users = await userModel
     .find({ isDeleted: false })
