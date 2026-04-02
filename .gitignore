@@ -48,6 +48,15 @@ typings/
 # Optional REPL history
 .node_repl_history
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Import logs and uploads
+import-log.json
+uploads/*
+
 # Output of 'npm pack'
 *.tgz
 
