@@ -1,7 +1,7 @@
 let userModel = require('../schemas/users')
 module.exports = {
     CreateAnUser: async function (
-        username, password, email, role, session,
+        username, password, email, role,
         fullname, avatarUrl, status, loginCount) {
         let newUser = new userModel({
             username: username,
@@ -13,7 +13,7 @@ module.exports = {
             role: role,
             loginCount: loginCount
         });
-        await newUser.save({ session });
+        await newUser.save();
         return newUser;
     },
     FindUserByUsername: async function (username) {

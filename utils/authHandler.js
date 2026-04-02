@@ -9,7 +9,7 @@ module.exports = {
             } else {
                 token = req.headers.authorization;
                 if (!token || !token.startsWith('Bearer')) {
-                    res.status(404).send("ban chua dang nhap")
+                    return res.status(404).send("ban chua dang nhap")
                 }
                 token = token.split(" ")[1];
             }
@@ -20,13 +20,13 @@ module.exports = {
                     req.user = user
                     next();
                 } else {
-                    res.status(404).send("ban chua dang nhap")
+                    return res.status(404).send("ban chua dang nhap")
                 }
             } else {
-                res.status(404).send("ban chua dang nhap")
+                return res.status(404).send("ban chua dang nhap")
             }
         } catch (error) {
-            res.status(404).send("ban chua dang nhap")
+            return res.status(404).send("ban chua dang nhap")
         }
     },
     checkRole: function (...requiredRole) {
@@ -35,7 +35,7 @@ module.exports = {
             if (requiredRole.includes(currentRole)) {
                 next();
             } else {
-                res.status(403).send("ban khong co quyen")
+                return res.status(403).send("ban khong co quyen")
             }
         }
     }
